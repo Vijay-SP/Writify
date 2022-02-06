@@ -1,0 +1,11 @@
+.carousal-height {
+  width: 100vw;
+  height: 100vh;
+}
+
+.caraText {
+  font-family: 'Dancing Script';
+  font-weight: bold;
+  font-size: 3rem;
+  color: black;
+}

@@ -45,7 +45,7 @@ const LogIn = () => {
                     <span className="p-2">
                       <img src={writer} alt="" width="55" height="50" />
                     </span>
-                    Writers hub
+                    Writify
                   </p>
                 </div>
                 <form onSubmit={handleSubmit}>

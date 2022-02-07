@@ -21,14 +21,14 @@ const Footer = () => {
                   fontFamily: "sans-serif",
                 }}
               >
-                WRITERS HUB OFFICIAL
+                WRITIFY
               </p>
 
               <p
                 className="s-3"
                 style={{ fontSize: "17px", textAlign: "justify" }}
               >
-                The WRITERS-HUB is found to give end user a trusted and verified
+                The WRITIFY is found to give end user a trusted and verified
                 platform to add their own written content which can be a blog ,
                 shayari,  kavita, quote, joke, etc. Here the user can enjoy
                 emotional and heart-touching shayaris , motivational quotes ,
@@ -45,15 +45,7 @@ const Footer = () => {
               style={{ fontSize: "17px" }}
             >
               <ul className="list-unstyled text-light">
-                <li className="py-2">
-                  <Link
-                    to="/about"
-                    className="text-light text-capitalize"
-                    style={{ textDecoration: "none" }}
-                  >
-                    about us
-                  </Link>
-                </li>
+                
                 <li className="py-2">
                   <Link
                     to="/contact"
@@ -81,10 +73,9 @@ const Footer = () => {
         <div class="text-center p-3" style={{ fontSize: "17px" }}>
           ©2022 Copyright : &nbsp;
           <Link class="text-light" to="/" style={{ textDecoration: "none" }}>
-            Writers Hub official | &nbsp;
+            Writify | &nbsp;
           </Link>
-          Made By <a className="text-light text-capitalize"
-            style={{ textDecoration: "none" }} href="https://vocalslocal.com/">Vocalslocal</a>
+          
         </div>
       </footer>
     </div>

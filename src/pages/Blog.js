@@ -219,7 +219,7 @@ const Blog = () => {
                     />
                   </p>
                 </section>
-                <Comments comments={comments} />
+                
               </article>
             </div>
 
@@ -483,71 +483,7 @@ const Blog = () => {
                   </div>
                 </div>
               </div>
-              <div className="d-flex flex-column border py-3 my-3">
-                <p
-                  className="author ps-3 ms-3"
-                  style={{
-                    position: 'relative',
-                    fontWeight: 'bold',
-                    fontSize: '18px',
-                    fontFamily: 'sans-serif',
-                    color: '#222',
-                  }}
-                >
-                  LEAVE A COMMENT
-                </p>
-                {success && (
-                  <span>
-                    <div class="alert alert-success" role="alert">
-                      Comment posted
-                    </div>
-                  </span>
-                )}
-                {error && (
-                  <span>
-                    <div class="alert alert-danger" role="alert">
-                      oops something went wrong!
-                    </div>
-                  </span>
-                )}
-                <form
-                  action="POST"
-                  className="p-3"
-                  style={{
-                    color: '#222',
-                    fontFamily: 'sans-serif',
-                    fontWeight: '600',
-                  }}
-                  onSubmit={addComment}
-                >
-                  <div class="form-group py-3">
-                    <label className="pb-1" for="exampleFormControlTextarea1">
-                      Comment
-                    </label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                      onChange={(e) => setComment(e.target.value)}
-                    ></textarea>
-                  </div>
-
-                  <p
-                    className="button-author py-1"
-                    style={{
-                      width: '50%',
-                    }}
-                  >
-                    <button
-                      type="submit"
-                      className="btn"
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Post Comment
-                    </button>
-                  </p>
-                </form>
-              </div>
+              
             </div>
           </div>
         </div>

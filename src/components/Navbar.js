@@ -29,7 +29,7 @@ const Navbar = ({ backButton }) => {
             to="/"
             style={{ fontFamily: 'Dancing Script', fontSize: '24px' }}
           >
-            Writers Hub
+            Writify
           </Link>
           <button
             class="navbar-toggler"
@@ -79,11 +79,7 @@ const Navbar = ({ backButton }) => {
                   Quotes
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/about">
-                  About
-                </Link>
-              </li>
+              
               <li class="nav-item">
                 <Link class="nav-link" to="/contact">
                   Contact
@@ -119,8 +115,7 @@ const Navbar = ({ backButton }) => {
                     >
                       Sign out
                     </button>
-                    Powered By <a href="https://vocalslocal.com/" className='vl' target="_blank" rel="noopener noreferrer"><b>Vocalslocal</b></a>
-                  </li>
+                    </li>
                 </>
               ) : (
                 <li class="nav-item">
@@ -130,8 +125,7 @@ const Navbar = ({ backButton }) => {
                   >
                     Sign in
                   </button>
-                  Powered By <a href="https://vocalslocal.com/" className='vl' target="_blank" rel="noopener noreferrer"><b>Vocalslocal</b></a>
-                </li>
+                  </li>
               )}
             </ul>
           </div>

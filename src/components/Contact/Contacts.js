@@ -48,23 +48,15 @@ const Contact1 = () => {
           <div class="container">
             <div class="content">
               <div class="left-side">
-                {/* <div class="address details">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="topic">Address</div>
-                <div class="text-one">Shop no 4, Shri Malang</div>
-                <div class="text-two">Road, Kalyan(E) 421306</div>
-              </div> */}
                 <div class="phone details">
                   <i class="fas fa-phone-alt"></i>
                   <div class="topic">Phone</div>
                   <div class="text-one"><a href="tel:+91 92095 22812" style={{ textDecoration: "none" }}>+91 92095 22812</a></div>
-                  <div class="text-two"><a href="tel:+91 90291 80518" style={{ textDecoration: "none" }}>+91 90291 80518</a></div>
                 </div>
                 <div class="email details">
                   <i class="fas fa-envelope"></i>
                   <div class="topic">Email</div>
-                  <div class="text-one"><a href="mailto:crodersofficial@gmail.com" style={{ textDecoration: "none" }}>crodersofficial@gmail.com</a> </div>
-                  <div class="text-two"><a href="mailto:writershubofficial@gmail.com" style={{ textDecoration: "none" }}>writershubofficial@gmail.com</a></div>
+                  <div class="text-two"><a href="mailto:writersworldofficial@gmail.com" style={{ textDecoration: "none" }}>writersworldofficial@gmail.com</a></div>
                 </div>
               </div>
               <div class="right-side">

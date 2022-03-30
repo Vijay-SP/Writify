@@ -16,6 +16,8 @@ const Card = ({
   deleteOption,
   collection,
   removeData,
+  isFeatured,
+  userId,
 }) => {
   const deletePost = async () => {
     try {
@@ -62,7 +64,7 @@ const Card = ({
         </p>
         <div className="links d-flex justify-content-between align-items-center m-0 p-1  ">
           <p className="small pb-0 pt-1 m-0" style={{ fontWeight: '700' }}>
-            {author}
+            <Link to={`/user/${userId}`}>{author}</Link>
           </p>
           <Link to={url} className="py-0 text-decoration-none">
             Read more
@@ -70,6 +72,7 @@ const Card = ({
         </div>
         <div className="d-flex justify-content-between">
           {!isApproved && <p className="text-danger"> Awaiting approval</p>}
+          {isFeatured === true ? (<p className="text-success">Featured</p>) : (<p className="text-danger"> Not Featured</p>)}
           {deleteOption && (
             <Trash onClick={deletePost} fontSize={25} color="red" />
           )}

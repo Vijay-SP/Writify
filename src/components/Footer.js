@@ -21,14 +21,14 @@ const Footer = () => {
                   fontFamily: "sans-serif",
                 }}
               >
-                WRITIFY
+                Writify
               </p>
 
               <p
                 className="s-3"
                 style={{ fontSize: "17px", textAlign: "justify" }}
               >
-                The WRITIFY is found to give end user a trusted and verified
+                Writify is found to give end user a trusted and verified
                 platform to add their own written content which can be a blog ,
                 shayari,  kavita, quote, joke, etc. Here the user can enjoy
                 emotional and heart-touching shayaris , motivational quotes ,
@@ -45,7 +45,15 @@ const Footer = () => {
               style={{ fontSize: "17px" }}
             >
               <ul className="list-unstyled text-light">
-                
+                <li className="py-2">
+                  <Link
+                    to="/about"
+                    className="text-light text-capitalize"
+                    style={{ textDecoration: "none" }}
+                  >
+                    about us
+                  </Link>
+                </li>
                 <li className="py-2">
                   <Link
                     to="/contact"
@@ -73,10 +81,9 @@ const Footer = () => {
         <div class="text-center p-3" style={{ fontSize: "17px" }}>
           ©2022 Copyright : &nbsp;
           <Link class="text-light" to="/" style={{ textDecoration: "none" }}>
-            Writify | &nbsp;
+            Writify
           </Link>
-          
-        </div>
+           </div>
       </footer>
     </div>
   );

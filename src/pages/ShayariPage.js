@@ -4,6 +4,7 @@ import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
+import "./shayaripage.css"
 
 const ShayariPage = () => {
   const [shayris, setShayris] = useState([]);
@@ -23,6 +24,7 @@ const ShayariPage = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
 
             shayris.push(data);
@@ -44,6 +46,7 @@ const ShayariPage = () => {
         <div className='container d-flex justify-content-center p-4'>
           <h2 style={{ fontFamily: 'Dancing Script' }}>Shayaris</h2>
         </div>
+        <section id="shayari-bg" class="d-flex align-items-center">
         <div
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
@@ -58,6 +61,7 @@ const ShayariPage = () => {
               isFeatured,
               updated_on,
               isApproved,
+              userId
             }) => {
               return (
                 <div>
@@ -69,12 +73,15 @@ const ShayariPage = () => {
                     url={`/shayaris/${id}`}
                     author={authorName}
                     isApproved={isApproved}
+                    isFeatured={isFeatured}
+                    userId={userId}
                   />
                 </div>
               );
             }
           )}
         </div>
+        </section>
         <Footer />
       </div>
     </motion.div>

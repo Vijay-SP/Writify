@@ -32,16 +32,16 @@ const about = () => {
           <section class="story-section company-sections ct-u-paddingBoth100 paddingBothHalf noTopMobilePadding" id="section">
             <div class="container1 text-center">
               <h2>WHAT DRIVES US</h2>
-              <h3>ENTERTAINIG, CLEAN, MEANINGFUL & HEART-TOUCHING CONTENT</h3>
+              <h3>ENTERTAINING, CLEAN, MEANINGFUL & HEART-TOUCHING CONTENT</h3>
               <div class="col-md-8 col-md-offset-2">
                 <div class="red-border"></div>
                 <p class="ct-u-size22 ct-u-fontWeight300 marginTop40">
-                  The WRITERS-HUB is found to give end user a trusted and verified
+                  Writify is found to give end user a trusted and verified
                   platform to add their own written content which can be a blog ,
                   shayari,  kavita, quote, joke, etc. Also the majority content of
-                  the writers-hub will be originally deleivered by themselves.
-                  The main motive of the writers-hub is to provide clean and beautiful
-                  content to the reader. The writers-hub assuers the transparency of the
+                  Writify will be originally delivered by themselves.
+                  The main motive of the WRITERS-WORLD is to provide clean and beautiful
+                  content to the reader. The WRITERS-WORLD assuers the transparency of the
                   content on the website as double admin verfication is to be done before
                   the content is put on the website.
 
@@ -120,7 +120,7 @@ const about = () => {
                   <p class="ct-u-size22 ct-u-fontWeight300 ct-u-marginBottom60 marginTop40">
                     In Todays world many websites steal the content from the users and display as
                     their own content which is totally wrong and illegal too. Addressing this issues
-                    Writers-Hub is bringing an end-user platoform where he/she can post his/her
+                    Writify is bringing an end-user platoform where he/she can post his/her
                     blog, shayari, kavita, quote, joke, etc. and will credits too. Also to
                     maintain the content clean and transparent only after two factor admin
                     verification content will be displayed on the website. The user can
@@ -133,43 +133,6 @@ const about = () => {
               </div>
             </div>
           </section>
-        </div>
-        <section class="customers-section company-sections ct-u-paddingBoth100 paddingBothHalf noTopMobilePadding">
-          <div className="container1">
-            <div class="col-md-8 col-md-offset-2">
-              <h2>ABOUT OUR CO-FOUNDERS</h2>
-            </div>
-          </div>
-        </section>
-        <div class="content">
-          <div class="card1">
-
-            <div class="icon1"><i class="fas fa-user-graduate fa-2x"></i></div>
-            <p class="title">Sayali Kathore</p>
-            <p class="text">Shayari Specialist. Checkout My Shayaris</p>
-
-          </div>
-          <div class="card1">
-
-            <div class="icon1"><i class="fas fa-user-secret fa-2x"></i></div>
-            <p class="title">Om Jadhav</p>
-            <p class="text">Developer for Writers-Hub.</p>
-
-          </div>
-          <div class="card1">
-
-            <div class="icon1"><i class="fas fa-baby fa-2x"></i></div>
-            <p class="title">Kaushal Bhangre</p>
-            <p class="text">Blog Specialist. Check out My Blogs</p>
-
-          </div>
-          <div class="card1">
-
-            <div class="icon1"><i class="fas fa-user-alt fa-2x"></i></div>
-            <p class="title">Kalyani Chacale</p>
-            <p class="text">Kavita Specialist. Check out My Kavitas</p>
-
-          </div>
         </div>
       </motion.div>
       <Footer />

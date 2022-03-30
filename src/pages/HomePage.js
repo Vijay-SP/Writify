@@ -12,11 +12,8 @@ import { useHistory } from 'react-router';
 
 const HomePage = () => {
   const [featBlogs, setFeatBlogs] = useState([]);
-
   const [featuredShayris, setFeaturedShayris] = useState([]);
-
   const [featuredKavitas, setFeaturedKavitas] = useState([]);
-
   const [featuredQuotes, setFeaturedQuotes] = useState([]);
 
   const { currentUser } = useAuth();
@@ -39,6 +36,7 @@ const HomePage = () => {
             isFeatured: doc.data().isFeatured,
             updated_on: doc.data().updated_on,
             isApproved: doc.data().isApproved,
+            userId: doc.data().userId,
           };
           if (data.isFeatured) {
             blogs.push(data);
@@ -62,6 +60,7 @@ const HomePage = () => {
             isFeatured: doc.data().isFeatured,
             updated_on: doc.data().updated_on,
             isApproved: doc.data().isApproved,
+            userId: doc.data().userId,
           };
           if (data.isFeatured) {
             feat_shayris.push(data);
@@ -85,6 +84,7 @@ const HomePage = () => {
             isFeatured: doc.data().isFeatured,
             updated_on: doc.data().updated_on,
             isApproved: doc.data().isApproved,
+            userId: doc.data().userId,
           };
           if (data.isFeatured) {
             feat_kavitas.push(data);
@@ -108,6 +108,7 @@ const HomePage = () => {
             isFeatured: doc.data().isFeatured,
             updated_on: doc.data().updated_on,
             isApproved: doc.data().isApproved,
+            userId: doc.data().userId,
           };
           if (data.isFeatured) {
             feat_quotes.push(data);
@@ -162,6 +163,7 @@ const HomePage = () => {
                   id,
                   authorName,
                   isApproved,
+                  userId
                 }) => {
                   return (
                     <Card
@@ -172,6 +174,7 @@ const HomePage = () => {
                       url={`/blogs/${id}`}
                       author={authorName}
                       isApproved={isApproved}
+                      userId={userId}
                     />
                   );
                 }
@@ -193,7 +196,7 @@ const HomePage = () => {
                 paddingBottom: '1px',
               }}
             >
-              trending Shayris
+              Featured Shayris
             </h2>
 
             <div
@@ -209,6 +212,8 @@ const HomePage = () => {
                   id,
                   authorName,
                   isApproved,
+                  isFeatured,
+                  userId
                 }) => {
                   return (
                     <Card
@@ -219,6 +224,8 @@ const HomePage = () => {
                       url={`/shayaris/${id}`}
                       author={authorName}
                       isApproved={isApproved}
+                      isFeatured={isFeatured}
+                      userId={userId}
                     />
                   );
                 }
@@ -239,7 +246,7 @@ const HomePage = () => {
               paddingBottom: '1px',
             }}
           >
-            trending kavitas
+            Featured kavitas
           </h2>
 
           <div
@@ -255,6 +262,8 @@ const HomePage = () => {
                 id,
                 authorName,
                 isApproved,
+                isFeatured,
+                userId
               }) => {
                 return (
                   <Card
@@ -265,6 +274,8 @@ const HomePage = () => {
                     url={`/kavitas/${id}`}
                     author={authorName}
                     isApproved={isApproved}
+                    isFeatured={isFeatured}
+                    userId={userId}
                   />
                 );
               }
@@ -284,7 +295,7 @@ const HomePage = () => {
               paddingBottom: '1px',
             }}
           >
-            trending quotes
+            Featured quotes
           </h2>
 
           <div
@@ -300,6 +311,8 @@ const HomePage = () => {
                 id,
                 authorName,
                 isApproved,
+                isFeatured,
+                userId
               }) => {
                 return (
                   <Card
@@ -310,6 +323,8 @@ const HomePage = () => {
                     url={`/quotes/${id}`}
                     author={authorName}
                     isApproved={isApproved}
+                    isFeatured={isFeatured}
+                    userId={userId}
                   />
                 );
               }

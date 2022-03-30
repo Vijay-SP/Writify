@@ -32,6 +32,9 @@ const Shayri = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [tlikes, setTlikes] = useState([]);
+  const [reposuccess, setrepoSuccess] = useState(false);
+  const [repoerror, setrepoError] = useState(false);
+  const [reason, setReason] = useState('');
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -111,6 +114,32 @@ const Shayri = () => {
       } catch (error) {
         setSuccess(false);
         setError(true);
+      }
+    }
+  };
+
+  const reportBlog = async (e) => {
+    e.preventDefault();
+
+    if (!currentUser) {
+      history.push('/login');
+      setrepoSuccess(false);
+      setrepoError(true);
+    } else {
+      try {
+        await db.collection('Reports').doc().set({
+          name: currentUser.username,
+          email: currentUser.email,
+          reason: reason,
+          userId:currentUser.id,
+          url: `/shayaris/${id}`,
+          created_at: new Date().toString(),
+        });
+        setrepoError(false);
+        setrepoSuccess(true);
+      } catch (error) {
+        setrepoSuccess(false);
+        setrepoError(true);
       }
     }
   };
@@ -202,6 +231,18 @@ const Shayri = () => {
                 </section>
                 <div className="mb-5" style={{ border: '0' }}>
                   <div className="comments  py-4">
+                    <p
+                      className="author ps-3 ms-3 "
+                      style={{
+                        position: 'relative',
+                        fontWeight: 'bold',
+                        fontSize: '18px',
+                        fontFamily: 'sans-serif',
+                        color: '#222',
+                      }}
+                    >
+                      TOP COMMENTS
+                    </p>
 
                     <div className="d-flex flex-row flex-wrap">
                       {/* single comment 1 */}
@@ -287,7 +328,7 @@ const Shayri = () => {
                   />
                 </figure>
                 <div className="d-flex justify-content-center flex-column align-items-center pb-5">
-                  <p>{shayri.authorName}</p>
+                  <p><Link to={`/user/${shayri.userId}`}>{shayri.authorName}</Link></p>
                 </div>
                 <div className="py-4">
                   <p
@@ -356,7 +397,180 @@ const Shayri = () => {
                 </div>
               </div>
 
-              
+              <div className="d-flex flex-column border py-3 my-3">
+                <p
+                  className="author ps-3 ms-3"
+                  style={{
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
+                  }}
+                >
+                  MORE
+                </p>
+                <div className="card-body">
+                  <div className="col-12">
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-start flex-row">
+                      <li className="px-2">
+                        <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Blogs</p>
+                        </Link>
+                      </li>
+                      <li className="px-2">
+                        <Link to="/shayaris" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Shayaris</p>
+                        </Link>
+                      </li>
+
+                      <li className="px-2">
+                        <Link to="/kavitas" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Kavitas</p>
+                        </Link>
+                      </li>
+                      <li className="px-2">
+                        <Link to="/quotes" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Quotes</p>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex flex-column border py-3 my-3">
+                <p
+                  className="author ps-3 ms-3"
+                  style={{
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
+                  }}
+                >
+                  LEAVE A COMMENT
+                </p>
+                {success && (
+                  <span>
+                    <div class="alert alert-success" role="alert">
+                      Comment posted
+                    </div>
+                  </span>
+                )}
+                {error && (
+                  <span>
+                    <div class="alert alert-danger" role="alert">
+                      oops something went wrong!
+                    </div>
+                  </span>
+                )}
+                <form
+                  action="POST"
+                  className="p-3"
+                  style={{
+                    color: '#222',
+                    fontFamily: 'sans-serif',
+                    fontWeight: '600',
+                  }}
+                  onSubmit={addComment}
+                >
+                  <div class="form-group py-3">
+                    <label className="pb-1" for="exampleFormControlTextarea1">
+                      Comment
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
+                  </div>
+
+                  <p
+                    className="button-author py-1"
+                    style={{
+                      width: '50%',
+                    }}
+                  >
+                    <button
+                      type="submit"
+                      className="btn"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Post Comment
+                    </button>
+                  </p>
+                </form>
+              </div>
+
+              <div className="d-flex flex-column border py-3 my-3">
+                <p
+                  className="author ps-3 ms-3"
+                  style={{
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
+                  }}
+                >
+                  REPORT THE BLOG
+                </p>
+                {reposuccess && (
+                  <span>
+                    <div class="alert alert-success" role="alert">
+                      Report posted
+                    </div>
+                  </span>
+                )}
+                {repoerror && (
+                  <span>
+                    <div class="alert alert-danger" role="alert">
+                      oops something went wrong!
+                    </div>
+                  </span>
+                )}
+                <form
+                  action="POST"
+                  className="p-3"
+                  style={{
+                    color: '#222',
+                    fontFamily: 'sans-serif',
+                    fontWeight: '600',
+                  }}
+                  onSubmit={reportBlog}
+                >
+                  <div class="form-group py-3">
+                    <label className="pb-1" for="exampleFormControlTextarea1">
+                      Report Reason
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      required
+                      onChange={(e) => setReason(e.target.value)}
+                    ></textarea>
+                  </div>
+
+                  <p
+                    className="button-author py-1"
+                    style={{
+                      width: '50%',
+                    }}
+                  >
+                    <button
+                      type="submit"
+                      className="btn"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Report
+                    </button>
+                  </p>
+                </form>
+              </div>
+
             </div>
           </div>
           {console.log(window.location.href)}

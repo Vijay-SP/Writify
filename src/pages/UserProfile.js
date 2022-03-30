@@ -10,7 +10,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './UserProfile.css';
 import Avatar from 'react-avatar';
-
+import { Link } from 'react-router-dom';
 import { PlusCircle } from 'react-bootstrap-icons';
 import Footer from '../components/Footer';
 import { Line } from 'rc-progress';
@@ -58,6 +58,7 @@ const UserProfile = () => {
                 description: doc.data().description,
                 authorName: doc.data().authorName,
                 isFeatured: doc.data().isFeatured,
+                isApproved: doc.data().isApproved,
                 updated_on: doc.data().updated_on,
                 userId: doc.data().userId,
               };
@@ -86,6 +87,7 @@ const UserProfile = () => {
                 description: doc.data().description,
                 authorName: doc.data().authorName,
                 isFeatured: doc.data().isFeatured,
+                isApproved: doc.data().isApproved,
                 updated_on: doc.data().updated_on,
               };
               logs.push(data);
@@ -110,6 +112,7 @@ const UserProfile = () => {
                 description: doc.data().description,
                 authorName: doc.data().authorName,
                 isFeatured: doc.data().isFeatured,
+                isApproved: doc.data().isApproved,
                 updated_on: doc.data().updated_on,
               };
               kavitas.push(data);
@@ -134,6 +137,7 @@ const UserProfile = () => {
                 description: doc.data().description,
                 authorName: doc.data().authorName,
                 isFeatured: doc.data().isFeatured,
+                isApproved: doc.data().isApproved,
                 updated_on: doc.data().updated_on,
               };
               quotes.push(data);
@@ -363,8 +367,125 @@ const UserProfile = () => {
                       {currentUser.email}
                     </span>{' '}
                     <br />
-                        
-                  
+                    <Link to={`/edituser/${currentUser.userId}`} className='text-decoration-none'> Edit Profile </Link><br />
+                    <Link to={`/user/${currentUser.userId}`} className='text-decoration-none'> View Profile </Link>
+                    <div className="container d-flex  justify-content-center mt-4 px-4">
+                      <div className="stats">
+                        <h6
+                          class="mb-0 text-dark"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
+                          Blogs
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showBlogForm) {
+                                  setShowBlogForm(false);
+                                } else {
+                                  setShowBlogForm(true);
+                                  setShowShayriForm(false);
+                                  setShowKavitaForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
+                        </h6>{' '}
+                        <span className="fs-5">{userBlogs.length}</span>
+                      </div>
+                      <div class="stats" style={{ marginLeft: '22px' }}>
+                        <h6
+                          className="mb-0 text-dark"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
+                          Kavitas
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showKavitaForm) {
+                                  setShowKavitaForm(false);
+                                } else {
+                                  setShowKavitaForm(true);
+                                  setShowBlogForm(false);
+                                  setShowShayriForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
+                        </h6>{' '}
+                        <span>{userKavitas.length}</span>
+                      </div>
+                      <div class="stats" style={{ marginLeft: '22px' }}>
+                        <h6
+                          className="mb-0 text-dark"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
+                          Shayris
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showShayriForm) {
+                                  setShowShayriForm(false);
+                                } else {
+                                  setShowShayriForm(true);
+                                  setShowBlogForm(false);
+                                  setShowKavitaForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
+                        </h6>{' '}
+                        <span>{userShayris.length}</span>
+                      </div>
+                      <div
+                        class="stats text-dark"
+                        style={{ marginLeft: '22px' }}
+                      >
+                        <h6
+                          class="mb-0"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
+                          Quotes
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showQuoteForm) {
+                                  setShowQuoteForm(false);
+                                } else {
+                                  setShowQuoteForm(true);
+                                  setShowBlogForm(false);
+                                  setShowShayriForm(false);
+                                  setShowKavitaForm(false);
+                                }
+                              }}
+                            />
+                          </div>
+                        </h6>{' '}
+                        <span>{userQuotes.length}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -373,14 +494,26 @@ const UserProfile = () => {
               <br />
               <div className="container d-flex flex-column justify-content-center">
                 {currentUser.isAdmin && (
-                  <button
-                    className="btn btn-primary ms-3 mt-2"
-                    onClick={() => {
-                      history.push('/approvals');
-                    }}
-                  >
-                    Approvals
-                  </button>
+                  <>
+                    <button
+                      className="btn btn-primary ms-3 mt-2"
+                      onClick={() => {
+                        history.push('/approvals');
+                      }}
+                    >
+                      Approved / Featured
+                    </button>
+                    <br />
+                    <button
+                      className="btn btn-primary ms-3 mt-2"
+                      onClick={() => {
+                        history.push('/reports');
+                      }}
+                    >
+                      Reported Content
+                    </button>
+                  </>
+
                 )}
 
                 {/* <button
@@ -772,6 +905,7 @@ const UserProfile = () => {
                   title,
                   authorName,
                   isFeatured,
+                  isApproved,
                   updated_on,
                 }) => {
                   return (
@@ -783,6 +917,8 @@ const UserProfile = () => {
                       url={`/shayaris/${id}`}
                       author={authorName}
                       deleteOption={true}
+                      isApproved={isApproved}
+                      isFeatured={isFeatured}
                       collection={'Shayris'}
                       id={id}
                       removeData={(id) => removeShayri(id)}
@@ -802,7 +938,7 @@ const UserProfile = () => {
           <div className="container d-flex flex-direction-row flex-wrap justify-content-center my-3">
             {userBlogs.length > 0 ? (
               userBlogs.map(
-                ({ id, image, description, title, authorName, updated_on }) => {
+                ({ id, image, description, title, authorName, isApproved, isFeatured, updated_on }) => {
                   return (
                     <Card
                       img={image}
@@ -810,6 +946,8 @@ const UserProfile = () => {
                       title={title}
                       author={authorName}
                       date={updated_on}
+                      isApproved={isApproved}
+                      isFeatured={isFeatured}
                       url={`/blogs/${id}`}
                       deleteOption={true}
                       collection={'Blogs'}
@@ -831,13 +969,15 @@ const UserProfile = () => {
           <div className=" d-flex flex-direction-row flex-wrap justify-content-center my-3">
             {userKavitas.length > 0 ? (
               userKavitas.map(
-                ({ img, description, title, updated_on, id, authorName }) => {
+                ({ img, description, title, updated_on, id, isApproved, isFeatured, authorName }) => {
                   return (
                     <Card
                       img={img}
                       content={description}
                       title={title}
                       date={updated_on}
+                      isApproved={isApproved}
+                      isFeatured={isFeatured}
                       url={`/kavitas/${id}`}
                       author={authorName}
                       deleteOption={true}
@@ -868,6 +1008,7 @@ const UserProfile = () => {
                   id,
                   authorName,
                   isApproved,
+                  isFeatured,
                 }) => {
                   return (
                     <Card
@@ -879,6 +1020,7 @@ const UserProfile = () => {
                       url={`/quotes/${id}`}
                       author={authorName}
                       isApproved={isApproved}
+                      isFeatured={isFeatured}
                       deleteOption={true}
                       collection={'Quotes'}
                       removeData={(id) => removeQuote(id)}

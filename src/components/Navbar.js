@@ -49,12 +49,12 @@ const Navbar = ({ backButton }) => {
               class="navbar-nav ml-auto justify-content-start"
               style={{ fontSize: '16px' }}
             >
-              <li class="nav-item">
+              <li class="navbar-brand">
                 <Link class="nav-link" to="/">
                   Home
                 </Link>
               </li>
-              <li class="nav-item">
+              <li class="navbar-brand">
                 <Link
                   class="nav-link"
                   to="/blogs"
@@ -64,23 +64,27 @@ const Navbar = ({ backButton }) => {
                   Blogs
                 </Link>
               </li>
-              <li class="nav-item">
+              <li class="navbar-brand">
                 <Link class="nav-link" to="/shayaris">
                   Shayaris
                 </Link>
               </li>
-              <li class="nav-item">
+              <li class="navbar-brand">
                 <Link class="nav-link" to="/kavitas">
                   Kavitas
                 </Link>
               </li>
-              <li class="nav-item">
+              <li class="navbar-brand">
                 <Link class="nav-link" to="/quotes">
                   Quotes
                 </Link>
               </li>
-              
-              <li class="nav-item">
+              <li class="navbar-brand">
+                <Link class="nav-link" to="/about">
+                  About
+                </Link>
+              </li>
+              <li class="navbar-brand">
                 <Link class="nav-link" to="/contact">
                   Contact
                 </Link>
@@ -94,7 +98,7 @@ const Navbar = ({ backButton }) => {
             <ul class="navbar-nav ml-auto" style={{ fontSize: '16px' }}>
               {currentUser && currentUser.username ? (
                 <>
-                  <li class="nav-item">
+                  <li class="navbar-brand">
                     <button
                       className="btn btn-light"
                       onClick={() =>
@@ -105,7 +109,7 @@ const Navbar = ({ backButton }) => {
                       {currentUser.username}
                     </button>
                   </li>
-                  <li class="nav-item">
+                  <li class="navbar-brand">
                     <button
                       className="btn btn-light"
                       onClick={() => {
@@ -115,17 +119,17 @@ const Navbar = ({ backButton }) => {
                     >
                       Sign out
                     </button>
-                    </li>
+                  </li>
                 </>
               ) : (
-                <li class="nav-item">
+                <li class="navbar-brand">
                   <button
                     className="btn btn-light"
                     onClick={() => history.push('/login')}
                   >
                     Sign in
                   </button>
-                  </li>
+                </li>
               )}
             </ul>
           </div>

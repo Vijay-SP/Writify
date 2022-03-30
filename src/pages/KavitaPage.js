@@ -5,6 +5,7 @@ import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
+import "./kavitapage.css"
 
 const KavitaPage = () => {
   const [kavitas, setKavitas] = useState([]);
@@ -24,6 +25,7 @@ const KavitaPage = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             kavitas.push(data);
           }
@@ -43,6 +45,7 @@ const KavitaPage = () => {
         <div className="container d-flex justify-content-center p-4">
           <h2 style={{ fontFamily: 'Dancing Script' }}>Kavitas</h2>
         </div>
+        <section id="kavita" class="d-flex align-items-center">
         <div
           className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
           style={{ width: '100vw' }}
@@ -56,6 +59,8 @@ const KavitaPage = () => {
               id,
               authorName,
               isApproved,
+              isFeatured,
+              userId
             }) => {
               return (
                 <Card
@@ -66,11 +71,14 @@ const KavitaPage = () => {
                   url={`/kavitas/${id}`}
                   author={authorName}
                   isApproved={isApproved}
+                  isFeatured={isFeatured}
+                  userId={userId}
                 />
               );
             }
           )}
         </div>
+        </section>
         <Footer />
       </div>
     </motion.div>

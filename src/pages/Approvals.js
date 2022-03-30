@@ -16,7 +16,7 @@ const Approvals = () => {
       .then((snapshot) => {
         const kavitas = [];
         snapshot.forEach((doc) => {
-          if (doc.data().isApproved === false) {
+          if (doc.data().isApproved === false || doc.data().isFeatured === false || doc.data().isFeatured === true) {
             const data = {
               id: doc.id,
               title: doc.data().title,
@@ -25,6 +25,7 @@ const Approvals = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             kavitas.push(data);
           }
@@ -39,7 +40,7 @@ const Approvals = () => {
       .then((snapshot) => {
         const blogs = [];
         snapshot.forEach((doc) => {
-          if (doc.data().isApproved === false) {
+          if (doc.data().isApproved === false || doc.data().isFeatured === false || doc.data().isFeatured === true) {
             const data = {
               id: doc.id,
               image: doc.data().images[0],
@@ -49,6 +50,7 @@ const Approvals = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             blogs.push(data);
           }
@@ -63,7 +65,7 @@ const Approvals = () => {
       .then((snapshot) => {
         const shyris = [];
         snapshot.forEach((doc) => {
-          if (doc.data().isApproved === false) {
+          if (doc.data().isApproved === false || doc.data().isFeatured === false || doc.data().isFeatured === true) {
             const data = {
               id: doc.id,
               title: doc.data().title,
@@ -72,6 +74,7 @@ const Approvals = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             shyris.push(data);
           }
@@ -86,7 +89,7 @@ const Approvals = () => {
       .then((snapshot) => {
         const quotes = [];
         snapshot.forEach((doc) => {
-          if (doc.data().isApproved === false) {
+          if (doc.data().isApproved === false || doc.data().isFeatured === false || doc.data().isFeatured === true) {
             const data = {
               id: doc.id,
               title: doc.data().title,
@@ -95,6 +98,7 @@ const Approvals = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             quotes.push(data);
           }
@@ -137,6 +141,9 @@ const Approvals = () => {
                     updated_on,
                     id,
                     authorName,
+                    isFeatured,
+                    isApproved,
+                    userId
                   }) => {
                     return (
                       <Card
@@ -146,6 +153,9 @@ const Approvals = () => {
                         date={updated_on}
                         url={`/approvals/blogs/${id}`}
                         author={authorName}
+                        isApproved={isApproved}
+                        isFeatured={isFeatured}
+                        userId={userId}
                       />
                     );
                   }
@@ -185,6 +195,8 @@ const Approvals = () => {
                     id,
                     authorName,
                     isApproved,
+                    isFeatured,
+                    userId
                   }) => {
                     return (
                       <Card
@@ -195,6 +207,8 @@ const Approvals = () => {
                         url={`/approvals/shayris/${id}`}
                         author={authorName}
                         isApproved={isApproved}
+                        isFeatured={isFeatured}
+                        userId={userId}
                       />
                     );
                   }
@@ -233,6 +247,8 @@ const Approvals = () => {
                   id,
                   authorName,
                   isApproved,
+                  isFeatured,
+                  userId
                 }) => {
                   return (
                     <Card
@@ -243,6 +259,8 @@ const Approvals = () => {
                       url={`/approvals/kavitas/${id}`}
                       author={authorName}
                       isApproved={isApproved}
+                      isFeatured={isFeatured}
+                      userId={userId}
                     />
                   );
                 }
@@ -272,7 +290,7 @@ const Approvals = () => {
               style={{ width: '100vw' }}
             >
               {quoteApprovals.map(
-                ({ img, description, title, updated_on, id, authorName }) => {
+                ({ img, description, title, updated_on, id, authorName, isApproved, isFeatured, userId }) => {
                   return (
                     <Card
                       img={img}
@@ -281,6 +299,9 @@ const Approvals = () => {
                       date={updated_on}
                       url={`/approvals/quotes/${id}`}
                       author={authorName}
+                      isApproved={isApproved}
+                      isFeatured={isFeatured}
+                      userId={userId}
                     />
                   );
                 }

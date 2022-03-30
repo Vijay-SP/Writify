@@ -62,6 +62,44 @@ const BlogApprovals = () => {
     }
   };
 
+  const handleFeatured = async () => {
+    try {
+      await db.collection('Blogs').doc(id).update({
+        isFeatured: true,
+      });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
+  }
+
+  const handleNotFeatured = async () => {
+    try {
+      await db.collection('Blogs').doc(id).update({
+        isFeatured: false,
+      });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
+  }
+
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
       <Navbar />
@@ -92,8 +130,18 @@ const BlogApprovals = () => {
                 <button className="btn btn-success" onClick={handleApprove}>
                   Approve
                 </button>
+
                 <button className="btn btn-danger" onClick={handleNotApprove}>
                   Disapprove
+                </button>
+                <button className="btn btn-success ms-3" onClick={handleFeatured}>
+                  Feature
+                </button>
+                <button
+                  className="btn btn-danger ms-3"
+                  onClick={handleNotFeatured}
+                >
+                  Not Feature
                 </button>
                 <div className="text-muted fst-italic mb-2">
                   Posted on {blog.updated_on}, 2021 <br /> by {blog.authorName}

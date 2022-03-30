@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import './blogpage.css';
 
 import { db } from '../firebase';
 
@@ -28,6 +29,7 @@ const BlogPage = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             logs.push(data);
           }
@@ -54,6 +56,7 @@ const BlogPage = () => {
         <div className="container d-flex justify-content-center p-4">
           <h1 style={{ fontFamily: 'Dancing Script' }}>Blogs</h1>
         </div>
+        <section id="zero" class="d-flex align-items-center">
         <div
           className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
           style={{ width: '100vw' }}
@@ -67,8 +70,11 @@ const BlogPage = () => {
               authorName,
               updated_on,
               isApproved,
+              isFeatured,
+              userId
             }) => {
               return (
+
                 <Card
                   img={image}
                   content={description}
@@ -77,11 +83,15 @@ const BlogPage = () => {
                   date={updated_on}
                   url={`/blogs/${id}`}
                   isApproved={isApproved}
+                  isFeatured={isFeatured}
+                  userId={userId}
                 />
+            
               );
             }
           )}
         </div>
+        </section>
         <Footer />
       </div>
     </motion.div>

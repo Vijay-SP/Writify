@@ -27,6 +27,9 @@ import { useAuth } from './context/AuthContext';
 import about from './components/About/about';
 import Contact1 from './components/Contact/Contacts';
 import { Flag } from 'react-bootstrap-icons';
+import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
+import Reports from './pages/Reports';
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -48,6 +51,7 @@ const App = () => {
         <Route path="/about" component={about} />
         <Route path="/contact" component={Contact1} />
         <Route exact path="/" component={HomePage} />
+        <Route path="/user/:id" component={Profile} />
         <Route path="/approvals/blogs/:id" component={BlogApprovals} />
         <Route path="/approvals/shayris/:id" component={ShayriApprovals} />
         <Route path="/approvals/quotes/:id" component={QuoteApprovals} />
@@ -58,26 +62,16 @@ const App = () => {
           component={Approvals}
           auth={currentUser ? true : false}
         />
-        {/* <ProtectedRoute
-          path="/approvals/blogs/:id"
-          component={BlogApprovals}
-          auth={currentUser ? true : false}
-        /> */}
-        {/* <ProtectedRoute
-          path="/approvals/shayris/:id"
-          component={ShayriApprovals}
+        <ProtectedRoute
+          path="/reports"
+          component={Reports}
           auth={currentUser ? true : false}
         />
         <ProtectedRoute
-          path="/approvals/quotes/:id"
-          component={QuoteApprovals}
+          path="/edituser/:id"
+          component={EditProfile}
           auth={currentUser ? true : false}
         />
-        <ProtectedRoute
-          path="/approvals/kavitas/:id"
-          component={KavitaApprovals}
-          auth={currentUser ? true : false}
-        /> */}
         <ProtectedRoute
           path="/users/:id"
           component={UserProfile}

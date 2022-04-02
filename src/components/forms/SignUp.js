@@ -51,7 +51,7 @@ const SignUp = () => {
                     <span className="p-2">
                       <img src={writer} alt="" width="55" height="50" />
                     </span>
-                    Writers World
+                    Writify
                   </p>
                 </div>
                 <form onSubmit={handleSubmit}>

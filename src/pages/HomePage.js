@@ -163,6 +163,7 @@ const HomePage = () => {
                   id,
                   authorName,
                   isApproved,
+                  isFeatured,
                   userId
                 }) => {
                   return (
@@ -174,6 +175,7 @@ const HomePage = () => {
                       url={`/blogs/${id}`}
                       author={authorName}
                       isApproved={isApproved}
+                      isFeatured={isFeatured}
                       userId={userId}
                     />
                   );

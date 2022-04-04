@@ -64,7 +64,7 @@ const ShayriApprovals = () => {
 
   const handleFeatured = async () => {
     try {
-      await db.collection('Shayaris').doc(id).update({
+      await db.collection('Shayris').doc(id).update({
         isFeatured: true,
       });
       setSuccess(true);
@@ -83,7 +83,7 @@ const ShayriApprovals = () => {
 
   const handleNotFeatured = async () => {
     try {
-      await db.collection('Shayaris').doc(id).update({
+      await db.collection('Shayris').doc(id).update({
         isFeatured: false,
       });
       setSuccess(true);

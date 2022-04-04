@@ -22,7 +22,7 @@ const BlogPage = () => {
             const data = {
               id: doc.id,
               title: doc.data().title,
-              image: doc.data().images[0],
+              image: doc.data().images,
               categories: doc.data().categories,
               description: doc.data().description,
               authorName: doc.data().authorName,

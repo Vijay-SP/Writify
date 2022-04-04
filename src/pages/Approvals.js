@@ -38,12 +38,12 @@ const Approvals = () => {
     db.collection('Blogs')
       .get()
       .then((snapshot) => {
-        const blogs = [];
+        let blogs = [];
         snapshot.forEach((doc) => {
           if (doc.data().isApproved === false || doc.data().isFeatured === false || doc.data().isFeatured === true) {
             const data = {
               id: doc.id,
-              image: doc.data().images[0],
+              image: doc.data().images,
               title: doc.data().title,
               description: doc.data().description,
               authorName: doc.data().authorName,

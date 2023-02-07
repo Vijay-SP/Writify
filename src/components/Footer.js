@@ -66,7 +66,7 @@ const Footer = () => {
 
                 <li className="py-2">
                   <Link
-                    href="#!"
+                    to="#!"
                     className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >

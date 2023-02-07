@@ -48,6 +48,7 @@ const Blog = () => {
       .then(function (doc) {
         if (doc.exists) {
           let data = doc.data();
+          data.images = data.images ? doc.data().images : [""];
           setBlog(data);
         }
       })
@@ -110,7 +111,7 @@ const Blog = () => {
           name: currentUser.username,
           email: currentUser.email,
           comment: comment,
-          userId:currentUser.id,
+          userId: currentUser.id,
           created_at: new Date().toString(),
         });
         setError(false);
@@ -192,7 +193,7 @@ const Blog = () => {
   };
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div>
       <Navbar />
       {blog ? (
         <div className="container mt-5">

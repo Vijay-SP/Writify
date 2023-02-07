@@ -82,7 +82,7 @@ const UserProfile = () => {
               const data = {
                 id: doc.id,
                 title: doc.data().title,
-                image: doc.data().images[0],
+                image: doc.data().images ? doc.data().images[0] : "",
                 categories: doc.data().categories,
                 description: doc.data().description,
                 authorName: doc.data().authorName,

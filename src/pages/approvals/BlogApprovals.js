@@ -18,6 +18,7 @@ const BlogApprovals = () => {
       .then(function (doc) {
         if (doc.exists) {
           let data = doc.data();
+          data.images = data.images ? doc.data().images : [""];
           setBlog(data);
         }
       })

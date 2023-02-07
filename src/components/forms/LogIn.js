@@ -97,7 +97,7 @@ const LogIn = () => {
 
                   <Link
                     class="d-block text-center mt-2 small"
-                    to="resetpassword"
+                    to="/resetpassword"
                   >
                     Forgot password ?
                   </Link>

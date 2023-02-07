@@ -29,7 +29,7 @@ const HomePage = () => {
           const data = {
             id: doc.id,
             title: doc.data().title,
-            image: doc.data().images[0],
+            image: doc.data().images ? doc.data().images[0] : "",
             categories: doc.data().categories,
             description: doc.data().description,
             authorName: doc.data().authorName,
@@ -123,11 +123,8 @@ const HomePage = () => {
   // }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <
+      >
       <div>
         <div style={{ zIndex: '1' }}>
           <Navbar backButton={false} />
@@ -341,7 +338,7 @@ const HomePage = () => {
           />
         </div>
       </div>
-    </motion.div>
+    </>
   );
 };
 
